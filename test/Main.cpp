@@ -9,7 +9,7 @@ int main (int argc, char * argv[]){
 
 	int *lin = new int[1], *col = new int[1];
 
-	int **matriz = loadData<int>("../data/input/A2x2.txt", lin, col);
+	int **matriz = loadData<int>("../data/input/B4x4.txt", lin, col);
 
 	imprimirMatriz(matriz, lin, col);
 	return 0;

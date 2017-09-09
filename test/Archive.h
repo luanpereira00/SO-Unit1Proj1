@@ -64,16 +64,16 @@ T** loadData(string nameArchive, int *lin, int *col){
 		matriz = alocarMatriz<T>(lin, col);
 		
 		//imprimirMatriz(matriz, lin, col);
-
-		/*for(int i = 0; i < n; i++){
-			for(int j = 0; j < n; j++){
+		string aux;
+		for(int i=0; i<*lin; i++){
+			for(int j=0; j<*col; j++){
 				entrada >> aux;
 				matriz[i][j] = atoi(aux.c_str());
 			}
 		}
 		while(!entrada.eof()){
 			getline(entrada, aux);
-		}*/
+		}
 		entrada.close();
 	}
 

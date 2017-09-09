@@ -13,12 +13,9 @@ using std::ifstream;
 #include <string>
 using std::string;
 
-<<<<<<< HEAD
 #include <cstdlib>
 using std::atoi;
 
-=======
->>>>>>> aea26d871dc029dafd3ae54188d1040d5e2cce72
 void getLinhasEColunas(int* lin, int* col, ifstream* entrada);
 
 template <typename T>
@@ -27,31 +24,26 @@ T** alocarMatriz(int *lin, int *col){
 	for(int i = 0; i < *lin; i++){
 		matriz[i] = new T[*col];
 	}
-<<<<<<< HEAD
 
 	for(int i = 0; i < *lin; i++){
 		for(int j = 0; j < *col; j++){
 			matriz[i][j] = 0 ;
 		}
 	}
-=======
->>>>>>> aea26d871dc029dafd3ae54188d1040d5e2cce72
 	return matriz;
 }
 
 template <typename T>
 void imprimirMatriz(T** matriz, int *lin, int *col){
-<<<<<<< HEAD
 	cout << "Matriz = " << endl; 
 	for(int i = 0; i <* lin; i++){
-=======
-	for(int i=0; i<*lin; i++){
->>>>>>> aea26d871dc029dafd3ae54188d1040d5e2cce72
-		cout << "| ";
-		for(int j = 0; j <* col; j++){
-			cout << matriz[i][j] << " ";
+		for(int i=0; i<*lin; i++){
+			cout << "| ";
+			for(int j = 0; j <* col; j++){
+				cout << matriz[i][j] << " ";
+			}
+			cout << "|" << endl;
 		}
-		cout << "|" << endl;
 	}
 }
 

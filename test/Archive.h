@@ -24,26 +24,17 @@ T** alocarMatriz(int *lin, int *col){
 	for(int i = 0; i < *lin; i++){
 		matriz[i] = new T[*col];
 	}
-
-	for(int i = 0; i < *lin; i++){
-		for(int j = 0; j < *col; j++){
-			matriz[i][j] = 0 ;
-		}
-	}
 	return matriz;
 }
 
 template <typename T>
 void imprimirMatriz(T** matriz, int *lin, int *col){
-	cout << "Matriz = " << endl; 
-	for(int i = 0; i <* lin; i++){
-		for(int i=0; i<*lin; i++){
-			cout << "| ";
-			for(int j = 0; j <* col; j++){
-				cout << matriz[i][j] << " ";
-			}
-			cout << "|" << endl;
+	for(int i=0; i<*lin; i++){
+		cout << "| ";
+		for(int j = 0; j <* col; j++){
+			cout << matriz[i][j] << " ";
 		}
+		cout << "|" << endl;
 	}
 }
 

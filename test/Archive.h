@@ -4,6 +4,7 @@
 #include <iostream>
 using std::endl;
 using std::cout;
+using std::cin;
 using std::getline;
 
 #include <fstream>
@@ -11,7 +12,6 @@ using std::ifstream;
 
 #include <string>
 using std::string;
-
 
 void getLinhasEColunas(int* lin, int* col, ifstream* entrada);
 
@@ -21,18 +21,11 @@ T** alocarMatriz(int *lin, int *col){
 	for(int i=0; i<*lin; i++){
 		matriz[i] = new T[*col];
 	}
-
-	for(int i=0; i<*lin; i++){
-		for(int j=0; j<*col; j++){
-			matriz[i][j] = 0;
-		}
-	}
 	return matriz;
 }
 
 template <typename T>
 void imprimirMatriz(T** matriz, int *lin, int *col){
-	cout << "Matriz = " << endl; 
 	for(int i=0; i<*lin; i++){
 		cout << "| ";
 		for(int j=0; j<*col; j++){
@@ -63,16 +56,10 @@ T** loadData(string nameArchive, int *lin, int *col){
 
 		matriz = alocarMatriz<T>(lin, col);
 		
-		//imprimirMatriz(matriz, lin, col);
-		string aux;
 		for(int i=0; i<*lin; i++){
 			for(int j=0; j<*col; j++){
-				entrada >> aux;
-				matriz[i][j] = atoi(aux.c_str());
+				entrada >> matriz[i][j];
 			}
-		}
-		while(!entrada.eof()){
-			getline(entrada, aux);
 		}
 		entrada.close();
 	}

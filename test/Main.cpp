@@ -9,9 +9,17 @@ int main (int argc, char * argv[]){
 
 	int *lin = new int[1], *col = new int[1];
 
-	int **matriz = loadData<int>("../data/input/B4x4.txt", lin, col);
+	int **matrizA = loadData<int>("../data/input/A4x4.txt", lin, col);
+	int **matrizB = loadData<int>("../data/input/B4x4.txt", lin, col);
 
-	imprimirMatriz(matriz, lin, col);
+	cout << "Matriz A = " << endl;
+	imprimirMatriz(matrizA, lin, col);
+	cout << endl;
+	
+	cout << "Matriz B = " << endl;
+	imprimirMatriz(matrizB, lin, col);
+	cout << endl;
+
 	return 0;
 }
 

@@ -3,6 +3,7 @@ using std::cout;
 using std::endl;
 
 #include "Archive.h"
+#include "Multiplica.h"
 
 int main (int argc, char * argv[]){
 	cout << "Ola, estou de volta a essa lingua maravilhosa!" << endl;
@@ -12,12 +13,15 @@ int main (int argc, char * argv[]){
 	int **matrizA = loadData<int>("../data/input/A4x4.txt", lin, col);
 	int **matrizB = loadData<int>("../data/input/B4x4.txt", lin, col);
 
-	cout << "Matriz A = " << endl;
 	imprimirMatriz(matrizA, lin, col);
 	cout << endl;
-	
-	cout << "Matriz B = " << endl;
 	imprimirMatriz(matrizB, lin, col);
+	cout << endl;
+	//int linha = *lin;
+
+	int **matrizC = multiplica(matrizA, matrizB, lin, lin, lin);
+
+	imprimirMatriz(matrizC, lin, col);
 	cout << endl;
 
 	return 0;

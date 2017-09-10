@@ -2,46 +2,59 @@
 #define _MULTIPLICA_H_
 
 #include <iostream>
-
 using std::cout;
 using std::endl;
 
-#include <cmath>
 #include <unistd.h> 
+
 #include "Archive.h"
 
 /** 
- * @fn 		int ** multiplicaI(T **matrizA, T **matrizB, T **matrizC, int n)
+ * @fn 		T multiplica2(T **matrizA, T **matrizB, int *apontI, int *apontJ, int colALinhaB) 
  * @brief	Funcao que multiplica duas matrizes quadradas de dimensao n x n de forma iterativa 
- * @param 	T 		matrizA 	Matriz de entrada 
- * @param 	T 		matrizB 	Matriz de entrada 
- * @param 	int 	n 			Dimensao das matrizes (n x n)
-
+ * @param 	matrizA 	T 		Matriz de entrada 
+ * @param 	matrizB		T 		Matriz de entrada 
+ * @param 	matrizC 	T 		Matriz de resultante 
+ * @param  	apontI		int*	apontador para o valor do iterador 'i' do laço da função principal
+ * @param  	apontJ		int*	apontador para o valor do iterador 'j' do laço da função principal
+ * @param  	colB		int		quantidade de linhas de B e de colunas de A
+ * @return 	soma		Resultado da soma
  */
+template <typename T>
+T multiplica2(T **matrizA, T **matrizB, int *apontI, int *apontJ, int colALinhaB) {
+	int soma = 0;
+	for (int k = 0; k < colALinhaB; k++) {
+		soma += matrizA[*apontI][k] * matrizB[k][*apontJ];
+	}
 
+	return soma;
+}
+
+/** 
+ * @fn 		T** multiplica(T **matrizA, T **matrizB, int *linhaA, int *colALinhaB, int *colB)
+ * @brief	Funcao que multiplica duas matrizes de forma iterativa e retorna a matriz resultante
+ * @param 	matrizA 	T 		Matriz de entrada 
+ * @param 	matrizB		T 		Matriz de entrada 
+ * @param  	linhaA		int*	apontador para o valor da quantidade de linhas da matriz A
+ * @param  	colALinhaB	int*	apontador para o valor da quantidade de colunas da matriz A e linhas da matriz B
+ * @param  	colB		int*	apontador para o valor da quantidade de colunas da matriz B
+ * @return 	matrizC
+ */
 template <typename T>
 T** multiplica(T **matrizA, T **matrizB, int *linhaA, int *colALinhaB, int *colB) {
-	T **matrizC = alocarMatriz<T>(linhaA, colB);
-	
-	for (int i = 0; i < *linhaA; i++)	{		
-		for (int j = 0; j < *colALinhaB; j++)	{
-			T soma = 0; 
+	int i = 0, j = 0;
+	int *apontI = &i;
+	int *apontJ = &j;
 
-			for(int k = 0; k < *linhaA; k++){
-				//int pid = fork();
-				soma = soma + matrizA[i][k] * matrizB[k][j];
-			}
-			matrizC[i][j] = soma;
-		}
-	}
-	return matrizC;
+	T **matrizC = alocarMatriz<T>(linhaA, colB);	
+ 
+	for (i = 0; i < *linhaA; i++) {  
+        for (j = 0; j < *colB; j++) {  
+        	matrizC[i][j] = multiplica2<T>(matrizA, matrizB, apontI, apontJ, (*colALinhaB));
+        }
+    }
+
+    return matrizC;
 }
 
 #endif
-
-//A nxp * B pxm = C nxm
-//A 3x4 * B 4x4
-//| 0 0 0 0 |   | 4 1 2 3 |    | 0 
-//| 1 3 4 5 | * | 1 1 1 1 | =  |
-//| 5 1 3 1 |   | 2 3 1 2 |    |
-//              | 1 2 3 1 |

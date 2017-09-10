@@ -20,14 +20,14 @@ using std::endl;
  */
 
 template <typename T>
-T** multiplica(T **matrizA, T **matrizB, int *linhaA, int *colALinhaB, int *colB) {
-	T **matrizC = alocarMatriz<T>(linhaA, colB);
+T** multiplica(T **matrizA, T **matrizB, int *linA, int *colALinB, int *colB) {
+	//FIXME condicional para garantir que linha A = linha B
+	T **matrizC = alocarMatriz<T>(linA, colB);
 	
-	for (int i = 0; i < *linhaA; i++)	{		
-		for (int j = 0; j < *colALinhaB; j++)	{
+	for (int i = 0; i < *linA; i++)	{		
+		for (int j = 0; j < *colALinB; j++)	{
 			T soma = 0; 
-
-			for(int k = 0; k < *linhaA; k++){
+			for(int k = 0; k < *linA; k++){
 				//int pid = fork();
 				soma = soma + matrizA[i][k] * matrizB[k][j];
 			}

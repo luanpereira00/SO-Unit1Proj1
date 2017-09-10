@@ -2,27 +2,63 @@
 using std::cout;
 using std::endl;
 
+//Para comunicacao entre processos
+#include <unistd.h>
+
 #include "Archive.h"
 #include "Multiplica.h"
+#include "SharedMem.h"
 
 int main (int argc, char * argv[]){
 	cout << "Ola, estou de volta a essa lingua maravilhosa!" << endl;
 
-	int *lin = new int[1], *col = new int[1];
+	int *linA = new int[1], *colA = new int[1];
+	int *linB = new int[1], *colB = new int[1];
 
-	int **matrizA = loadData<int>("../data/input/A4x4.txt", lin, col);
-	int **matrizB = loadData<int>("../data/input/B4x4.txt", lin, col);
+	int **matrizA = loadData<int>("../data/input/A2x2.txt", linA, colA);
+	int **matrizB = loadData<int>("../data/input/B2x2.txt", linB, colB);
 
-	imprimirMatriz(matrizA, lin, col);
+	imprimirMatriz(matrizA, linA, colA);
 	cout << endl;
-	imprimirMatriz(matrizB, lin, col);
+	imprimirMatriz(matrizB, linB, colB);
 	cout << endl;
 	//int linha = *lin;
 
-	int **matrizC = multiplica(matrizA, matrizB, lin, lin, lin);
+	int **matrizC = multiplica(matrizA, matrizB, linA, linB, colB);
 
-	imprimirMatriz(matrizC, lin, col);
+	imprimirMatriz(matrizC, linA, colB);
 	cout << endl;
+
+	int *mC;
+	key_t key = 10;
+	mC = sharedMem<int>(100, key);
+
+
+	//Teste de fork, processos e memoria compartilhada
+	cout << "Sou o pai com o pid " << getpid() << ", se eu morrer os outros morrem\n" ;
+	int originalProcess = getpid();
+	fork();
+	cout << "Sou o processo de pid " << getpid() << endl;
+
+	if(getpid()==originalProcess){
+		//cout << "Teste SHM: ";
+		for (int i=0; i<10; i++){
+			mC[i]=0;
+			
+		}
+	//cout << endl;
+	}
+	else {
+		sleep(2);
+		for (int i=0; i<10; i++){
+			cout << mC[i] << " ";
+		}
+		cout << endl;
+		return 0;
+	}
+	
+	sleep(3);
+	shmctl(key, IPC_RMID, NULL);
 
 	return 0;
 }

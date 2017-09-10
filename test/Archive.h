@@ -31,7 +31,7 @@ template <typename T>
 void imprimirMatriz(T** matriz, int *lin, int *col){
 	for(int i=0; i<*lin; i++){
 		cout << "| ";
-		for(int j = 0; j <* col; j++){
+		for(int j = 0; j <*col; j++){
 			cout << matriz[i][j] << " ";
 		}
 		cout << "|" << endl;

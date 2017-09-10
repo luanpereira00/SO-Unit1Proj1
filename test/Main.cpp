@@ -15,8 +15,8 @@ int main (int argc, char * argv[]){
 	int *linA = new int[1], *colA = new int[1];
 	int *linB = new int[1], *colB = new int[1];
 
-	int **matrizA = loadData<int>("../data/input/A2x2.txt", linA, colA);
-	int **matrizB = loadData<int>("../data/input/B2x2.txt", linB, colB);
+	int **matrizA = loadData<int>("../data/input/A16x16.txt", linA, colA);
+	int **matrizB = loadData<int>("../data/input/B16x16.txt", linB, colB);
 
 	imprimirMatriz(matrizA, linA, colA);
 	cout << endl;
@@ -29,10 +29,10 @@ int main (int argc, char * argv[]){
 
 	imprimirMatriz(matrizC, linA, colB);
 	cout << endl;
-
+/*
 	int *mC;
 	key_t key = 10;
-	/*
+	
 	mC = sharedMem<int>(10, key);
 
 

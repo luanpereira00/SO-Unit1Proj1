@@ -30,9 +30,9 @@ int main (int argc, char * argv[]){
 	imprimirMatriz(matrizC, linA, colB);
 	cout << endl;
 
-	/*
 	int *mC;
 	key_t key = 10;
+	/*
 	mC = sharedMem<int>(10, key);
 
 
@@ -61,8 +61,11 @@ int main (int argc, char * argv[]){
 	}
 	
 	sleep(3);
-	shmctl(key, IPC_RMID, NULL);
 	*/
+	// System("ipcrm -m <num>");
+	// shmctl(key, IPC_RMID, NULL);
+	// shmctl(50, IPC_RMID, NULL);
+	
 	
 	return 0;
 }

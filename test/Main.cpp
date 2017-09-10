@@ -24,14 +24,16 @@ int main (int argc, char * argv[]){
 	cout << endl;
 	//int linha = *lin;
 
+	//FIXME Colocar condicional para colA e linB
 	int **matrizC = multiplica(matrizA, matrizB, linA, linB, colB);
 
 	imprimirMatriz(matrizC, linA, colB);
 	cout << endl;
 
+	/*
 	int *mC;
 	key_t key = 10;
-	mC = sharedMem<int>(100, key);
+	mC = sharedMem<int>(10, key);
 
 
 	//Teste de fork, processos e memoria compartilhada
@@ -50,16 +52,18 @@ int main (int argc, char * argv[]){
 	}
 	else {
 		sleep(2);
+		cout << "SharedMem = [ ";
 		for (int i=0; i<10; i++){
 			cout << mC[i] << " ";
 		}
-		cout << endl;
+		cout << "]"<< endl;
 		return 0;
 	}
 	
 	sleep(3);
 	shmctl(key, IPC_RMID, NULL);
-
+	*/
+	
 	return 0;
 }
 

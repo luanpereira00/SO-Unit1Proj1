@@ -8,6 +8,7 @@ using std::endl;
 #include <unistd.h> 
 
 #include "Archive.h"
+#include "SharedMem.h"
 
 /** 
  * @fn 		T multiplica2(T **matrizA, T **matrizB, int *apontI, int *apontJ, int colALinhaB) 
@@ -46,7 +47,7 @@ T** multiplica(T **matrizA, T **matrizB, int *linhaA, int *colALinhaB, int *colB
 	int *apontI = &i;
 	int *apontJ = &j;
 
-	T **matrizC = alocarMatriz<T>(linhaA, colB);	
+	T **matrizC = alocarMatrizComShMEM<T>(linhaA, colB);	
  
 	for (i = 0; i < *linhaA; i++) {  
         for (j = 0; j < *colB; j++) {  

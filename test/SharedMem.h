@@ -41,4 +41,35 @@ T* sharedMem(int tam, key_t key){
 	return attachShMem<T>(shmid);
 }
 
+/*
+template <typename T>
+T** alocarMatriz(int *lin, int *col){
+	T **matriz = new T*[*lin]; 
+	for(int i = 0; i < *lin; i++){
+		matriz[i] = new T[*col];
+	}
+	return matriz;
+}
+*/
+
+/*
+	key usadas:
+	1, 10, 100, 50~54
+*/
+
+template <typename T>
+//FIXME remover todas as memorias compartilhadas identificadas pelas keys com IPC_RMID (ISSO NAO ESTA FUNCIONANDO!)
+T** alocarMatrizComShMEM(int *linha, int *coluna){
+	T **matriz;
+	key_t key = 50;
+	int lin = *linha;
+	int col = *coluna;
+	matriz = sharedMem<T*>(lin, key);
+	for(int i=0; i<lin; i++){
+		key++; //Key deve ser incrementado para que cada linha da matriz seja referenciada por uma chave unica
+		matriz[i] = sharedMem<T>(col, key);
+	}
+	return matriz;
+}
+
 #endif

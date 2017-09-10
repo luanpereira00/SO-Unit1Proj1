@@ -21,26 +21,10 @@ using std::endl;
  * @return 	soma		Resultado da soma
  */
 template <typename T>
-<<<<<<< HEAD
 T multiplica2(T **matrizA, T **matrizB, int *apontI, int *apontJ, int colALinhaB) {
 	int soma = 0;
 	for (int k = 0; k < colALinhaB; k++) {
 		soma += matrizA[*apontI][k] * matrizB[k][*apontJ];
-=======
-T** multiplica(T **matrizA, T **matrizB, int *linA, int *colALinB, int *colB) {
-	//FIXME condicional para garantir que linha A = linha B
-	T **matrizC = alocarMatriz<T>(linA, colB);
-	
-	for (int i = 0; i < *linA; i++)	{		
-		for (int j = 0; j < *colALinB; j++)	{
-			T soma = 0; 
-			for(int k = 0; k < *linA; k++){
-				//int pid = fork();
-				soma = soma + matrizA[i][k] * matrizB[k][j];
-			}
-			matrizC[i][j] = soma;
-		}
->>>>>>> 86cdcac440db597e499637378262542a185ee22a
 	}
 
 	return soma;

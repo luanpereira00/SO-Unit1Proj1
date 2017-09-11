@@ -25,10 +25,10 @@ int main (int argc, char * argv[]){
 	//int linha = *lin;
 
 	//FIXME Colocar condicional para colA e linB
-	int **matrizC = multiplica(matrizA, matrizB, linA, linB, colB);
+	//int **matrizC = multiplica<T>(matrizA, matrizB, linA, linB, colB);
 
-	imprimirMatriz(matrizC, linA, colB);
-	cout << endl;
+	//imprimirMatriz(matrizC, linA, colB);
+	//cout << endl;
 /*
 	int *mC;
 	key_t key = 10;

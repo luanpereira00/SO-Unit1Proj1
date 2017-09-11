@@ -82,4 +82,19 @@ T** multiplica(T **matrizA, T **matrizB, int *linhaA, int *colALinhaB, int *colB
     return matrizC;
 }
 
+template <typename T>
+T** multiplicaSemProcesso(T **matrizA, T **matrizB, int *linhaA, int *colALinhaB, int *colB) {
+	int i = 0, j = 0;
+	int *apontI = &i;
+	int *apontJ = &j;
+
+	T **matrizC = alocarMatriz<T>(*linhaA, *colB);
+
+	for (i = 0; i < *linhaA; i++) {  
+        for (j = 0; j < *colB; j++) { 
+     		matrizC[i][j] = multiplica2<T>(matrizA, matrizB, apontI, apontJ, (*colALinhaB));
+        }
+    }
+}
+
 #endif

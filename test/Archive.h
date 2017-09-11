@@ -18,6 +18,15 @@ using std::atoi;
 
 void getLinhasEColunas(int* lin, int* col, ifstream* entrada);
 
+/**
+* @fn 		void cleanArchive(string nameArchive)
+* @brief 	Função para limpar o arquivo de saída
+* @param 	string nameArchive Nome do arquivo de saída
+* @return 	A função não irá retornar nada.
+*/
+void cleanArchive(string nameArchive);
+
+
 template <typename T>
 T** alocarMatriz(int *lin, int *col){
 	T **matriz = new T*[*lin]; 

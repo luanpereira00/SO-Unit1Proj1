@@ -10,6 +10,7 @@ using std::endl;
 #include "SharedMem.h"
 
 int main (int argc, char * argv[]){
+	outArchives();
 	cout << "Ola, estou de volta a essa lingua maravilhosa!" << endl;
 
 	int *linA = new int[1], *colA = new int[1];

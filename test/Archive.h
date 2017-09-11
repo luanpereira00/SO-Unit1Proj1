@@ -2,10 +2,10 @@
 #define _ARCHIVE_H_
 
 #include <iostream>
+using std::getline;
 using std::endl;
 using std::cout;
 using std::cin;
-using std::getline;
 
 #include <fstream>
 using std::ifstream;
@@ -78,4 +78,14 @@ T** loadData(string nameArchive, int *lin, int *col){
 
 	return matriz;
 }
+
+
+/**
+ * @fn 		void outArchives () 
+ * @brief 	Função para gerar as matrizes de dimensões 1x1, 2x2, 3x3, 4x4,
+ * 		5x5, 6x6, 8x8, 10x10, 20x20, 30x30, 40x40, 50x50, 75x75 e 100x100
+ * 		randomicamente e colocalas em um arquivo.
+ */
+void outArchives ();
+
 #endif

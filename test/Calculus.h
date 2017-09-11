@@ -19,6 +19,10 @@ using std::endl;
 #include <cstring>
 using std::string;
 
+#include <fstream>
+using std::ofstream;
+using std::ios;
+
 #include <chrono>
 #include <ctime> 
 #include <cmath>
@@ -37,19 +41,19 @@ float desvioPadrao(float *vetorTempo, int n);
 
 /**
  * @fn 	  void calcularTempo (T **matrizA, T **matrizB, int linA, int colAlinB, int colB)
- * @brief Função para calcular a média de tempos para fazer a multiplicação das matrizes 	
- * 				com processos e sem processos.
+ * @brief Função para calcular a média de tempos para fazer a multiplicação de matrizes 
+ * 				de tamanho 'n' utilizando processos e sem utilizá-los.
  *
- * @param matrizA   A matriz a
- * @param matrizB   A matriz b
- * @param linA      A quantidade de linhas de A
- * @param colAlinB  A quantidade de colunas de A e a quantidade de linnhas B
- * @param colB      A quantidade de colunas de B
+ * @param matrizA   	T** 	- A matriz a
+ * @param matrizB   	T** 	- A matriz b
+ * @param n				int 	- Dimensão nxn das matrizes
+ * @param nomeArquivo	String	- Nome do arquivo de saída
  */
 template <typename T>
-void calcularTempo (T **matrizA, T **matrizB, int linA, int colAlinB, int colB, string nomeArquivo) {
+void calcularTempo (T **matrizA, T **matrizB, int n, string nomeArquivo) {
 	float *vComProcesso = new float[20];
 	float *vSemProcesso = new float[20];
+	int *aux = &n;
 
 	int **matrizC; 
 	for(int i = 0; i < 20; i++) {	
@@ -57,24 +61,27 @@ void calcularTempo (T **matrizA, T **matrizB, int linA, int colAlinB, int colB, 
 		std::chrono::duration<float> elapsed_seconds;
 
 		start = std::chrono::system_clock::now();
-		matrizC = multiplica<T>(matrizA, matrizB, linA, colAlinB, colB);
+		matrizC = multiplica<T>(matrizA, matrizB, aux, aux, aux);
 		end = std::chrono::system_clock::now();
 		elapsed_seconds = end-start;
 		vComProcesso[i] = elapsed_seconds;
 
 
 		start = std::chrono::system_clock::now();
-		matrizC = multiplicaSemProcesso<T>(matrizA, matrizB, linA, colAlinB, colB);
+		matrizC = multiplicaSemProcesso<T>(matrizA, matrizB, aux, aux, aux);
 		end = std::chrono::system_clock::now();
 		elapsed_seconds = end-start;
 		vComProcesso[i] = elapsed_seconds;
 	}
 
-	for(int i = 0; i < linA; i++)  delete matrizC[i];
+	for(int i = 0; i < n; i++)  delete matrizC[i];
 	delete [] matrizC;
 	
 	float d1 =  desvioPadrao(vComProcesso, 20);
 	float d2 = desvioPadrao(vComProcesso, 20);
 
-	// ...
+	ofstream saida;
+	saida.open(nomeArquivo.c_str(), ios::app);
+	saida << d1 << " " << d2 << endl;
+	saida.close();
 }

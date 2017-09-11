@@ -3,7 +3,7 @@
  * @brief   Arquivo para fazer os calculos referentes à avaliação empíricas 
  * 			dos algorítmos de multiplicação de matrizes usando processos e 
  * 			normalmente
- * 			
+ * 
  * @author 	Shirley Ohara (shirleyohara@ufrn.edu.br)
  * @author 	Joaliton Luan (luanpereira00@outlook.com)
  * @since  	09/09/2017

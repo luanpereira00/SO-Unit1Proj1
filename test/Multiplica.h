@@ -82,6 +82,16 @@ T** multiplica(T **matrizA, T **matrizB, int *linhaA, int *colALinhaB, int *colB
     return matrizC;
 }
 
+/** 
+ * @fn 		T** multiplicaSemProcesso(T **matrizA, T **matrizB, int *linhaA, int *colALinhaB, int *colB)
+ * @brief	Funcao que multiplica duas matrizes de forma iterativa e retorna a matriz resultante
+ * @param 	matrizA 	T 		Matriz de entrada 
+ * @param 	matrizB		T 		Matriz de entrada 
+ * @param  	linhaA		int*	apontador para o valor da quantidade de linhas da matriz A
+ * @param  	colALinhaB	int*	apontador para o valor da quantidade de colunas da matriz A e linhas da matriz B
+ * @param  	colB		int*	apontador para o valor da quantidade de colunas da matriz B
+ * @return 	matrizC
+ */
 template <typename T>
 T** multiplicaSemProcesso(T **matrizA, T **matrizB, int *linhaA, int *colALinhaB, int *colB) {
 	int i = 0, j = 0;
@@ -95,6 +105,8 @@ T** multiplicaSemProcesso(T **matrizA, T **matrizB, int *linhaA, int *colALinhaB
      		matrizC[i][j] = multiplica2<T>(matrizA, matrizB, apontI, apontJ, (*colALinhaB));
         }
     }
+
+    return matrizC;
 }
 
 #endif

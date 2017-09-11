@@ -86,6 +86,6 @@ T** loadData(string nameArchive, int *lin, int *col){
  * 		5x5, 6x6, 8x8, 10x10, 20x20, 30x30, 40x40, 50x50, 75x75 e 100x100
  * 		randomicamente e colocalas em um arquivo.
  */
-void outArchives ();
+void outArchives (string lyric);
 
 #endif

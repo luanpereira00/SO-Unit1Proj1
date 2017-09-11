@@ -10,18 +10,19 @@ using std::endl;
 #include "SharedMem.h"
 
 int main (int argc, char * argv[]){
-	outArchives();
+	outArchives("A"); // chama para criar as matrizes
+	outArchives("B"); // chama para criar as matrizes
 	cout << "Ola, estou de volta a essa lingua maravilhosa!" << endl;
 
 	int *linA = new int[1], *colA = new int[1];
 	int *linB = new int[1], *colB = new int[1];
 
-	int **matrizA = loadData<int>("../data/input/A16x16.txt", linA, colA);
-	int **matrizB = loadData<int>("../data/input/B16x16.txt", linB, colB);
+	//int **matrizA = loadData<int>("../data/input/A16x16.txt", linA, colA);
+	//int **matrizB = loadData<int>("../data/input/B16x16.txt", linB, colB);
 
-	imprimirMatriz(matrizA, linA, colA);
-	cout << endl;
-	imprimirMatriz(matrizB, linB, colB);
+	//imprimirMatriz(matrizA, linA, colA);
+	//cout << endl;
+	//imprimirMatriz(matrizB, linB, colB);
 	cout << endl;
 	//int linha = *lin;
 

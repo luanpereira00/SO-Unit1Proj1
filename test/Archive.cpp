@@ -35,19 +35,20 @@ void cleanArchive(string nameArchive){
 }
 
 /**
- * @fn 		void outArchives () 
+ * @fn 		void outArchives (string lyric) 
  * @brief 	Função para gerar as matrizes de dimensões 1x1, 2x2, 3x3, 4x4,
  * 		5x5, 6x6, 8x8, 10x10, 20x20, 30x30, 40x40, 50x50, 75x75 e 100x100
  * 		randomicamente e colocalas em um arquivo.
+ * @param 	string lyric
  */
-void outArchives () {
+void outArchives (string lyric) {
 	cout << " Gerando arquivos de saída...." << endl;
 
 	int size[14] = {1, 2, 3, 4, 5, 6, 8, 10, 20, 30, 40, 50, 75, 100};
 
 	for(int i = 0; i < 14; i++){
 		string way = "../data/input/", n = to_string(size[i]);
-		string nameArchive = way + "A" + n + "x" + n + ".txt";
+		string nameArchive = way + lyric + n + "x" + n + ".txt";
 		ofstream saida; 
 		saida.open(nameArchive.c_str());
 		saida.clear();

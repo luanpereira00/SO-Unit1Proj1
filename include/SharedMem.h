@@ -87,24 +87,11 @@ T** alocarMatrizComShMEM(int *lin, int *col){
 	return matriz;
 }
 
-/*template <typename T>
-void deleteMem(key_t key, int tam){
-	int shmid = -1;
-	
 
-	System("ipcrm -m "+shmid);
-}
+void deleteMem(key_t key);
 
-template <typename T>
+
 //FIXME remover todas as memorias compartilhadas identificadas pelas keys com IPC_RMID (ISSO NAO ESTA FUNCIONANDO!)
-void deleteSharedMem(int *lin){
-	key_t key=20* (*lin);
-	key_t starter = key;
-	for(int i=0; i<*lin; i++){
-		key++; //Key deve ser incrementado para que cada linha da matriz seja referenciada por uma chave unica
-		deleteMem<T>(key, *lin);
-	}
-	deleteMen<T>(starter);
-}*/
+void deleteSharedMem(int *lin);
 
 #endif

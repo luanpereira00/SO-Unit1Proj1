@@ -51,7 +51,7 @@ init:
 
 # Alvo (target) para a construcao do executavel
 # Define os arquivos main.o, vector.o, sort.o, mod.o e busca.o como dependencias
-Projeto1SO: $(OBJ_DIR)/Main.o $(OBJ_DIR)/Calculus.o $(OBJ_DIR)/Archive.o
+Projeto1SO: $(OBJ_DIR)/Main.o $(OBJ_DIR)/Calculus.o $(OBJ_DIR)/Archive.o $(OBJ_DIR)/ShMem.o
 
 	@echo "============="
 	@echo "Ligando o alvo $@"
@@ -74,6 +74,11 @@ $(OBJ_DIR)/Calculus.o: $(SRC_DIR)/Calculus.cpp $(SRC_DIR)/Archive.cpp $(INC_DIR)
 # Alvo (target) para a construcao do objeto Archive.o
 # Define os arquivos Archive.cpp e Archive.h, como dependencias.
 $(OBJ_DIR)/Archive.o: $(SRC_DIR)/Archive.cpp $(INC_DIR)/Archive.h
+	$(CC) -c $(CFLAGS) -o $@ $<
+
+# Alvo (target) para a construcao do objeto Archive.o
+# Define os arquivos Archive.cpp e Archive.h, como dependencias.
+$(OBJ_DIR)/ShMem.o: $(SRC_DIR)/SharedMem.cpp $(INC_DIR)/SharedMem.h
 	$(CC) -c $(CFLAGS) -o $@ $<
 
 gnuplot: 

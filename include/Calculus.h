@@ -71,7 +71,7 @@ void calcularTempo (T **matrizA, T **matrizB, int n, string nomeArquivo) {
 		auto end_timeProc = high_resolution_clock::now();
 		vComProcesso[i] = duration_cast<microseconds>(end_timeProc - start_timeProc).count();
 
-		//deleteSharedMem<T>(aux);
+		deleteSharedMem(aux);
 
 		auto start_timeNoProc = high_resolution_clock::now();
 		matrizC = multiplicaSemProcesso<T>(matrizA, matrizB, aux, aux, aux);

@@ -23,44 +23,21 @@ using std::endl;
 #include "Calculus.h"
 
 int main (int argc, char * argv[]){
+	
 	srand(time(NULL));
 	outArchives("A"); // chama para criar as matrizes
 	outArchives("B"); // chama para criar as matrizes
+
+	cout << endl << "Iniciando análise empírica!" << endl;
+	cout << "Cada multiplicação é realizada 20 vezes para reduzir oscilações de tempos através de um desvio padrão." << endl;
+	cout << "Pode ser que não haja memória suficiente para as multiplicações de matrizes enormes, isso não afetará os dados gerados anteriomente" << endl;
+	cout << "Ao final do processo, gere os gráficos digitando \'$ make gnuplot\' por linha de comando." <<endl;
+	cout << "Por favor, espere até que as multiplicações finalizem." << endl << endl;
+	
 	analiseEmpirica();
 
-/*
-	int *mC;
-	key_t key = 10;
-	
-	mC = sharedMem<int>(10, key);
+	cout << endl << endl << "Digite \'$ make gnuplot\' no terminal para gerar os gráficos com os dados obtidos. " << endl;
 
-
-	//Teste de fork, processos e memoria compartilhada
-	cout << "Sou o pai com o pid " << getpid() << ", se eu morrer os outros morrem\n" ;
-	int originalProcess = getpid();
-	fork();
-	cout << "Sou o processo de pid " << getpid() << endl;
-
-	if(getpid()==originalProcess){
-		//cout << "Teste SHM: ";
-		for (int i=0; i<10; i++){
-			mC[i]=0;
-			
-		}
-	//cout << endl;
-	}
-	else {
-		sleep(2);
-		cout << "SharedMem = [ ";
-		for (int i=0; i<10; i++){
-			cout << mC[i] << " ";
-		}
-		cout << "]"<< endl;
-		return 0;
-	}
-	
-	sleep(3);
-	*/
 	// System("ipcrm -m <num>");
 	// shmctl(key, IPC_RMID, NULL);
 	// shmctl(50, IPC_RMID, NULL);

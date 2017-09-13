@@ -68,7 +68,7 @@ $(OBJ_DIR)/Main.o: $(SRC_DIR)/Main.cpp $(SRC_DIR)/Calculus.cpp $(INC_DIR)/Calcul
 
 # Alvo (target) para a construcao do objeto Calculus.o
 # Define os arquivos calculaTempo.cpp, vector.cpp, sort.cpp, busca.cpp, calculaTempo.h, vector.h, sort.h, busca.h como dependencias.
-$(OBJ_DIR)/Calculus.o: $(SRC_DIR)/Calculus.cpp $(SRC_DIR)/Archive.cpp $(INC_DIR)/Calculus.h $(INC_DIR)/Archive.h 
+$(OBJ_DIR)/Calculus.o: $(SRC_DIR)/Calculus.cpp $(SRC_DIR)/Archive.cpp $(INC_DIR)/Calculus.h $(INC_DIR)/Archive.h $(INC_DIR)/SharedMem.h
 	$(CC) -c $(CFLAGS) -o $@ $<	
 
 # Alvo (target) para a construcao do objeto Archive.o

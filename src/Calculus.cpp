@@ -66,8 +66,8 @@ void analiseEmpirica () {
 		//chama a função que calcula o tempo
 		calcularTempo(matrizA, matrizB, *linA, exitArchive);
 
-		//deleteMatriz<int>(matrizA, *linA);
-		//deleteMatriz<int>(matrizB, *linB);
+		deleteMatriz<int>(matrizA, *linA);
+		deleteMatriz<int>(matrizB, *linB);
 
 		cout << " Cálculos para dimensão " << size[i] << "x" << size[i] << " efetuado com sucesso!" << endl;
 	}

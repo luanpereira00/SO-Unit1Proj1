@@ -9,6 +9,7 @@ using std::cin;
 
 #include <fstream>
 using std::ifstream;
+using std::ofstream;
 
 #include <string>
 using std::string;
@@ -79,6 +80,29 @@ T** loadData(string nameArchive, int *lin, int *col){
 	return matriz;
 }
 
+/** 
+* @fn 		int **loadata(string nameArchive, int n, T **matriz)
+* @brief 	Funcao que carrega as matrizes do arquivo 
+* @param 	string 		nameArchive 	Nome do arquivo de saída
+* @param 	int 		n 				Dimensao da matriz (nxn)
+* @param 	T 			matriz 			Nome da matriz que irá receber os valores do arquivo de  entrada
+* @return 	0;
+**/ 
+template <typename T>
+void storeData(string nameArchive, int *lin, int *col, T** matriz){
+	ofstream saida(nameArchive.c_str());
+	
+	saida << *lin << " " << *col << endl;
+
+	for(int i=0; i<*lin; i++){
+		for(int j=0; j<*col; j++){
+			saida << matriz[i][j];
+			if(j<*col-1) saida << " ";
+		}
+		saida << endl;
+	}
+	saida.close();
+}
 
 /**
  * @fn 		void outArchives () 

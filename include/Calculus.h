@@ -35,6 +35,7 @@ using namespace std::chrono;
 
 #include "Multiplica.h"
 #include "Archive.h"
+#include "SharedMem.h"
 
 /**
  * @fn 		float desvioPadrao(float *vetorTempo, int n)
@@ -61,30 +62,35 @@ void calcularTempo (T **matrizA, T **matrizB, int n, string nomeArquivo) {
 	float *vSemProcesso = new float[20];
 	int *aux = &n;
 
-	int **matrizC;
-
+	T **matrizC;
+	
 	for(int i = 0; i < 20; i++) {	
 
-		auto start_time = high_resolution_clock::now();
-		// matrizC = multiplica<T>(matrizA, matrizB, aux, aux, aux);
-		auto end_time = high_resolution_clock::now();
-		vComProcesso[i] = duration_cast<microseconds>(end_time - start_time).count();
+		auto start_timeProc = high_resolution_clock::now();
+		matrizC = multiplica<T>(matrizA, matrizB, aux, aux, aux); //ComProcesso
+		auto end_timeProc = high_resolution_clock::now();
+		vComProcesso[i] = duration_cast<microseconds>(end_timeProc - start_timeProc).count();
 
-		start_time = high_resolution_clock::now();
+		//deleteSharedMem<T>(aux);
+
+		auto start_timeNoProc = high_resolution_clock::now();
 		matrizC = multiplicaSemProcesso<T>(matrizA, matrizB, aux, aux, aux);
-		end_time = high_resolution_clock::now();
-		vSemProcesso[i] = duration_cast<microseconds>(end_time - start_time).count();
+		auto end_timeNoProc = high_resolution_clock::now();
+		vSemProcesso[i] = duration_cast<microseconds>(end_timeNoProc - start_timeNoProc).count();
+		
+		//cout << "Debug " << i << " proc=" << vComProcesso[i] << " noProc=" << vSemProcesso[i] << " ms" << endl;
 	}
+
+	string way = "./data/output/";
+	string nameOutput = way + "C" + to_string(*aux) + "x" + to_string(*aux) + ".txt"; 
+	storeData<T>(nameOutput, aux, aux, matrizC);
 
 	for(int i = 0; i < n; i++)  delete matrizC[i];
 	delete [] matrizC;
-	
-	float d1 =  desvioPadrao(vComProcesso, 20);
-	float d2 = desvioPadrao(vSemProcesso, 20);
 
 	ofstream saida;
 	saida.open(nomeArquivo.c_str(), ios::app);
-	saida << n << " " << d1 << " " << d2 << endl;
+	saida << n << " " << desvioPadrao(vComProcesso, 20) << " " << desvioPadrao(vSemProcesso, 20) << endl;
 	saida.close();
 }
 

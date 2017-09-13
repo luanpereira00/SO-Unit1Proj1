@@ -49,10 +49,7 @@ T** multiplica(T **matrizA, T **matrizB, int *linhaA, int *colALinhaB, int *colB
 	int *apontJ = &j;
 
 	T **matrizC = alocarMatrizComShMEM<T>(linhaA, colB);	
- 	//1.110 (16x16) - Fork
- 	//0.090 (16x16) - No Fork
- 	//+5min (1024x1024) - Fork
- 	//12.389 (1024x1024) - No Fork
+
  	pid_t pid;
 	for (i = 0; i < *linhaA; i++) {  
         for (j = 0; j < *colB; j++) {  
@@ -62,7 +59,7 @@ T** multiplica(T **matrizA, T **matrizB, int *linhaA, int *colALinhaB, int *colB
 		        perror("fork");
 		        exit(1);
 		    }
-		    if (pid == 0) //se o pid retornado do fork for = 0, simboliza que esta num processo filho
+		    if (pid == 0) //se o pid retornado do fork for = 0, simboliza que este eh um processo filho
 		    {
 		        //O código aqui dentro será executado no processo filho
 		       matrizC[i][j] = multiplica2<T>(matrizA, matrizB, apontI, apontJ, (*colALinhaB));

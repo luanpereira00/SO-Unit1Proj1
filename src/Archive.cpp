@@ -59,7 +59,7 @@ void outArchives (string lyric) {
 
 		for(int j = 0; j < size[i]; j++) {
 			for(int k = 0; k < size[i]; k++) {
-				int aux = rand() % (size[i]);// + 1) - ((int)size[i]/2);
+				int aux = rand() % (size[i]+ 1);// - ((int)size[i]/2);
 				saida << aux << " ";
 			}
 			saida << endl;
